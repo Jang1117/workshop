@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jang's Workshop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .category {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .project-link {
+            color: #667eea;
+            font-size: 0.75rem;
+            word-break: break-all;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            color: white;
+            opacity: 0.8;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛠️ Jang's Workshop</h1>
+            <p class="subtitle">나만의 프로젝트 모음집</p>
+        </header>
+
+        <div class="category">
+            <h2 class="category-title">💼 Work</h2>
+            <div class="projects-grid">
+                <a href="https://jang1117.github.io/wind/" class="project-card" target="_blank">
+                    <div class="project-icon">🌬️</div>
+                    <div class="project-title">Wind</div>
+                    <div class="project-description">한국 풍력발전단지</div>
+                    <div class="project-link">jang1117.github.io/wind</div>
+                </a>
+
+                <a href="https://jang1117.github.io/palm/" class="project-card" target="_blank">
+                    <div class="project-icon">🌴</div>
+                    <div class="project-title">Palm</div>
+                    <div class="project-description">Global Palm Plant</div>
+                    <div class="project-link">jang1117.github.io/palm</div>
+                </a>
+
+                <a href="https://github.com/Jang1117/soil" class="project-card" target="_blank">
+                    <div class="project-icon">🌱</div>
+                    <div class="project-title">Soil</div>
+                    <div class="project-description">토양 관련 프로젝트</div>
+                    <div class="project-link">github.com/Jang1117/soil</div>
+                </a>
+
+                <a href="https://github.com/Jang1117/STIassets" class="project-card" target="_blank">
+                    <div class="project-icon">📊</div>
+                    <div class="project-title">STI Assets</div>
+                    <div class="project-description">STI 자산 관리</div>
+                    <div class="project-link">github.com/Jang1117/STIassets</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">📚 Learning</h2>
+            <div class="projects-grid">
+                <a href="https://jang1117.github.io/word-ID/" class="project-card" target="_blank">
+                    <div class="project-icon" style="font-family: 'Noto Color Emoji', sans-serif;">🇮🇩</div>
+                    <div class="project-title">Indonesian Word</div>
+                    <div class="project-description">인도네시아어 단어장</div>
+                    <div class="project-link">jang1117.github.io/word-ID</div>
+                </a>
+
+                <a href="https://jang1117.github.io/korean" class="project-card" target="_blank">
+                    <div class="project-icon" style="font-family: 'Noto Color Emoji', sans-serif;">🇰🇷</div>
+                    <div class="project-title">Korean</div>
+                    <div class="project-description">기초 한국어 학습</div>
+                    <div class="project-link">jang1117.github.io/korean</div>
+                </a>
+                
+                <a href="https://jang1117.github.io/japanese/" class="project-card" target="_blank">
+                    <div class="project-icon" style="font-family: 'Noto Color Emoji', sans-serif;">🇯🇵</div>
+                    <div class="project-title">Japanese</div>
+                    <div class="project-description">기초 일본어 학습</div>
+                    <div class="project-link">jang1117.github.io/japanese</div>
+                </a>
+
+                <a href="https://jang1117.github.io/gugudan" class="project-card" target="_blank">
+                    <div class="project-icon">✖️</div>
+                    <div class="project-title">Gugudan</div>
+                    <div class="project-description">구구단 학습 프로젝트</div>
+                    <div class="project-link">jang1117.github.io/gugudan</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">🎮 ETC</h2>
+            <div class="projects-grid">
+                <a href="https://jang1117.github.io/lunch/" class="project-card" target="_blank">
+                    <div class="project-icon">🍱</div>
+                    <div class="project-title">Lunch</div>
+                    <div class="project-description">점심 룰렛</div>
+                    <div class="project-link">jang1117.github.io/lunch</div>
+                </a>
+
+                <a href="https://jang1117.github.io/sudoku/" class="project-card" target="_blank">
+                    <div class="project-icon">🔢</div>
+                    <div class="project-title">Sudoku</div>
+                    <div class="project-description">스도쿠 퍼즐 게임</div>
+                    <div class="project-link">jang1117.github.io/sudoku</div>
+                </a>
+
+                <a href="https://jang1117.github.io/linkopen" class="project-card" target="_blank">
+                    <div class="project-icon">🔗</div>
+                    <div class="project-title">Link Open</div>
+                    <div class="project-description">링크 오픈 도구</div>
+                    <div class="project-link">jang1117.github.io/linkopen</div>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Jang's Workshop. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
