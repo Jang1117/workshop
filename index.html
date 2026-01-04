@@ -14,128 +14,152 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px 15px;
+            height: 100vh; /* 높이를 화면에 고정 */
             display: flex;
             align-items: center;
+            justify-content: center;
+            overflow: hidden; /* 스크롤 방지 */
+            padding: 10px;
         }
 
         .container {
             max-width: 1400px;
-            margin: 0 auto;
             width: 100%;
+            height: 95vh; /* 내부 컨텐츠 높이 제한 */
+            display: flex;
+            flex-direction: column;
         }
 
         header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             color: white;
+            flex-shrink: 0;
         }
 
         h1 {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
+            font-size: 1.6rem;
+            margin-bottom: 2px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .subtitle {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             opacity: 0.9;
         }
 
+        /* 카테고리들을 감싸는 메인 그리드 (2x2 배치) */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+            flex-grow: 1;
+            min-height: 0; /* 자식 요소의 overflow 처리를 위해 필요 */
+        }
+
         .category {
-            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
         }
 
         .category-title {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: white;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            flex-shrink: 0;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 카드가 넓어지도록 최소 너비 증가 */
-            gap: 15px;
+            grid-template-columns: 1fr 1fr; /* 각 카테고리 내부도 2열 배치 */
+            gap: 8px;
+            flex-grow: 1;
+            align-content: start;
         }
 
         .project-card {
             background: white;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease;
             text-decoration: none;
             color: #333;
-            display: flex; /* Flexbox 레이아웃 적용 */
-            align-items: flex-start; /* 상단 정렬 */
-            gap: 15px; /* 아이콘과 텍스트 사이 간격 */
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
         }
 
         .project-icon {
-            width: 50px; /* 아이콘 크기 약간 증가 */
-            height: 50px;
+            width: 35px;
+            height: 35px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 8px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem; /* 이모지 크기 증가 */
-            font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
-            flex-shrink: 0; /* 아이콘 크기 고정 */
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
 
-        /* 텍스트 요소들을 감싸는 새로운 컨테이너 스타일 */
         .project-content {
-            flex-grow: 1; /* 남은 공간을 모두 차지 */
+            flex-grow: 1;
+            min-width: 0; /* 텍스트 넘침 방지 */
         }
 
         .project-title {
-            font-size: 1.1rem;
+            font-size: 0.85rem;
             font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
+            margin-bottom: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .project-description {
             color: #666;
-            line-height: 1.4;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .project-link {
-            color: #667eea;
-            font-size: 0.75rem;
-            word-break: break-all;
+            display: none; /* 공간 절약을 위해 링크 텍스트는 숨김 (카드 전체가 클릭 가능) */
         }
 
         footer {
             text-align: center;
-            margin-top: 25px;
+            padding: 10px 0;
             color: white;
             opacity: 0.8;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
+            flex-shrink: 0;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
+        /* 태블릿 및 모바일 최적화 (해상도가 아주 작으면 스크롤 허용으로 전환) */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                overflow-y: auto; /* 작은 화면에선 어쩔 수 없이 스크롤 허용 */
             }
-            
-            .projects-grid {
-                grid-template-columns: 1fr; /* 모바일에서는 1열로 표시 */
-            }
+            body { overflow: auto; }
         }
     </style>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -144,174 +168,140 @@
             <p class="subtitle">나만의 프로젝트 모음집</p>
         </header>
 
-        <div class="category">
-            <h2 class="category-title">💼 Work</h2>
-            <div class="projects-grid">
-                <a href="https://jang1117.github.io/wind/" class="project-card" target="_blank">
-                    <div class="project-icon">🌀</div>
-                    <div class="project-content">
-                        <div class="project-title">Wind</div>
-                        <div class="project-description">한국 풍력발전단지</div>
-                        <div class="project-link">jang1117.github.io/wind</div>
-                    </div>
-                </a>
-
-                <a href="https://jang1117.github.io/palm/" class="project-card" target="_blank">
-                    <div class="project-icon">🌴</div>
-                    <div class="project-content">
-                        <div class="project-title">Palm</div>
-                        <div class="project-description">Global Palm Plant</div>
-                        <div class="project-link">jang1117.github.io/palm</div>
-                    </div>
-                </a>
-
-                <a href="https://jang1117.github.io/soil" class="project-card" target="_blank">
-                    <div class="project-icon">🌱</div>
-                    <div class="project-content">
-                        <div class="project-title">Soil</div>
-                        <div class="project-description">토양 관련 프로젝트</div>
-                        <div class="project-link">jang1117.github.io/soil</div>
-                    </div>
-                </a>
-
-                <a href="https://jang1117.github.io/STIassets" class="project-card" target="_blank">
-                    <div class="project-icon">📊</div>
-                    <div class="project-content">
-                        <div class="project-title">STI Assets</div>
-                        <div class="project-description">STI 자산 관리</div>
-                        <div class="project-link">jang1117.github.io/STIassets</div>
-                    </div>
-                </a>
+        <div class="main-content">
+            <div class="category">
+                <h2 class="category-title">💼 Work</h2>
+                <div class="projects-grid">
+                    <a href="https://jang1117.github.io/wind/" class="project-card" target="_blank">
+                        <div class="project-icon">🌀</div>
+                        <div class="project-content">
+                            <div class="project-title">Wind</div>
+                            <div class="project-description">한국 풍력발전단지</div>
+                        </div>
+                    </a>
+                    <a href="https://jang1117.github.io/palm/" class="project-card" target="_blank">
+                        <div class="project-icon">🌴</div>
+                        <div class="project-content">
+                            <div class="project-title">Palm</div>
+                            <div class="project-description">Global Palm Plant</div>
+                        </div>
+                    </a>
+                    <a href="https://jang1117.github.io/soil" class="project-card" target="_blank">
+                        <div class="project-icon">🌱</div>
+                        <div class="project-content">
+                            <div class="project-title">Soil</div>
+                            <div class="project-description">토양 관련 프로젝트</div>
+                        </div>
+                    </a>
+                    <a href="https://jang1117.github.io/STIassets" class="project-card" target="_blank">
+                        <div class="project-icon">📊</div>
+                        <div class="project-content">
+                            <div class="project-title">STI Assets</div>
+                            <div class="project-description">STI 자산 관리</div>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <div class="category">
-            <h2 class="category-title">📚 Learning</h2>
-            <div class="projects-grid">
-                <a href="https://jang1117.github.io/word-ID/" class="project-card" target="_blank">
-                    <div class="project-icon" style="font-family: 'Noto Color Emoji', sans-serif;">🇮🇩</div>
-                    <div class="project-content">
-                        <div class="project-title">Indonesian Word</div>
-                        <div class="project-description">인도네시아어 단어장</div>
-                        <div class="project-link">jang1117.github.io/word-ID</div>
-                    </div>
-                </a>
-
-                <a href="https://jang1117.github.io/korean" class="project-card" target="_blank">
-                    <div class="project-icon" style="font-family: 'Noto Color Emoji', sans-serif;">🇰🇷</div>
-                    <div class="project-content">
-                        <div class="project-title">Basic Korean</div>
-                        <div class="project-description">기초 한국어 학습</div>
-                        <div class="project-link">jang1117.github.io/korean</div>
-                    </div>
-                </a>
-
-                <a href="https://jang1117.github.io/korean/font-practice" class="project-card" target="_blank">
-                    <div class="project-icon">✍️</div>
-                    <div class="project-content">
-                        <div class="project-title">Font Practice</div>
-                        <div class="project-description">한글 글씨 연습</div>
-                        <div class="project-link">jang1117.github.io/korean/font-practice</div>
-                    </div>
-                </a>
-                
-                <a href="https://jang1117.github.io/japanese/" class="project-card" target="_blank">
-                    <div class="project-icon" style="font-family: 'Noto Color Emoji', sans-serif;">🇯🇵</div>
-                    <div class="project-content">
-                        <div class="project-title">Basic Japanese</div>
-                        <div class="project-description">기초 일본어 학습</div>
-                        <div class="project-link">jang1117.github.io/japanese</div>
-                    </div>
-                </a>
-
-                <a href="https://jang1117.github.io/gugudan" class="project-card" target="_blank">
-                    <div class="project-icon">✖️</div>
-                    <div class="project-content">
-                        <div class="project-title">Gugudan</div>
-                        <div class="project-description">구구단 학습 프로젝트</div>
-                        <div class="project-link">jang1117.github.io/gugudan</div>
-                    </div>
-                </a>
+            <div class="category">
+                <h2 class="category-title">📚 Learning</h2>
+                <div class="projects-grid">
+                    <a href="https://jang1117.github.io/word-ID/" class="project-card" target="_blank">
+                        <div class="project-icon" style="font-family: 'Noto Color Emoji', sans-serif;">🇮🇩</div>
+                        <div class="project-content">
+                            <div class="project-title">Indonesian</div>
+                            <div class="project-description">인도네시아어 단어장</div>
+                        </div>
+                    </a>
+                    <a href="https://jang1117.github.io/korean" class="project-card" target="_blank">
+                        <div class="project-icon" style="font-family: 'Noto Color Emoji', sans-serif;">🇰🇷</div>
+                        <div class="project-content">
+                            <div class="project-title">Basic Korean</div>
+                            <div class="project-description">기초 한국어 학습</div>
+                        </div>
+                    </a>
+                    <a href="https://jang1117.github.io/japanese/" class="project-card" target="_blank">
+                        <div class="project-icon" style="font-family: 'Noto Color Emoji', sans-serif;">🇯🇵</div>
+                        <div class="project-content">
+                            <div class="project-title">Basic Japanese</div>
+                            <div class="project-description">기초 일본어 학습</div>
+                        </div>
+                    </a>
+                    <a href="https://jang1117.github.io/gugudan" class="project-card" target="_blank">
+                        <div class="project-icon">✖️</div>
+                        <div class="project-content">
+                            <div class="project-title">Gugudan</div>
+                            <div class="project-description">구구단 학습</div>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <div class="category">
-            <h2 class="category-title">🎮 ETC</h2>
-            <div class="projects-grid">
-                <a href="https://jang1117.github.io/lunch/" class="project-card" target="_blank">
-                    <div class="project-icon">🍱</div>
-                    <div class="project-content">
-                        <div class="project-title">Lunch</div>
-                        <div class="project-description">점심 룰렛</div>
-                        <div class="project-link">jang1117.github.io/lunch</div>
-                    </div>
-                </a>
-
-                <a href="https://jang1117.github.io/sudoku/" class="project-card" target="_blank">
-                    <div class="project-icon">🔢</div>
-                    <div class="project-content">
-                        <div class="project-title">Sudoku</div>
-                        <div class="project-description">스도쿠 퍼즐 게임</div>
-                        <div class="project-link">jang1117.github.io/sudoku</div>
-                    </div>
-                </a>
-
-                <a href="https://jang1117.github.io/linkopen" class="project-card" target="_blank">
-                    <div class="project-icon">🔗</div>
-                    <div class="project-content">
-                        <div class="project-title">Link Open</div>
-                        <div class="project-description">링크 오픈 도구</div>
-                        <div class="project-link">jang1117.github.io/linkopen</div>
-                    </div>
-                </a>
-
-                <a href="https://jang1117.github.io/weekly" class="project-card" target="_blank">
-                    <div class="project-icon">📅</div>
-                    <div class="project-content">
-                        <div class="project-title">Weekly</div>
-                        <div class="project-description">주간 일정 관리</div>
-                        <div class="project-link">jang1117.github.io/weekly</div>
-                    </div>
-                </a>
+            <div class="category">
+                <h2 class="category-title">🎮 ETC</h2>
+                <div class="projects-grid">
+                    <a href="https://jang1117.github.io/lunch/" class="project-card" target="_blank">
+                        <div class="project-icon">🍱</div>
+                        <div class="project-content">
+                            <div class="project-title">Lunch</div>
+                            <div class="project-description">점심 룰렛</div>
+                        </div>
+                    </a>
+                    <a href="https://jang1117.github.io/sudoku/" class="project-card" target="_blank">
+                        <div class="project-icon">🔢</div>
+                        <div class="project-content">
+                            <div class="project-title">Sudoku</div>
+                            <div class="project-description">스도쿠 게임</div>
+                        </div>
+                    </a>
+                    <a href="https://jang1117.github.io/linkopen" class="project-card" target="_blank">
+                        <div class="project-icon">🔗</div>
+                        <div class="project-content">
+                            <div class="project-title">Link Open</div>
+                            <div class="project-description">링크 오픈 도구</div>
+                        </div>
+                    </a>
+                    <a href="https://jang1117.github.io/weekly" class="project-card" target="_blank">
+                        <div class="project-icon">📅</div>
+                        <div class="project-content">
+                            <div class="project-title">Weekly</div>
+                            <div class="project-description">주간 일정 관리</div>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <div class="category">
-            <h2 class="category-title">🛠️ Utility</h2>
-            <div class="projects-grid">
-                <a href="https://naver.me/GSc1DgLX" class="project-card" target="_blank">
-                    <div class="project-icon">📐</div>
-                    <div class="project-content">
-                        <div class="project-title">투명 각도기</div>
-                        <div class="project-description">화면 위에서 사용하는 각도기</div>
-                        <div class="project-link">naver.me/GSc1DgLX</div>
-                    </div>
-                </a>
-
-                <a href="https://naver.me/FtGbTYyB" class="project-card" target="_blank">
-                    <div class="project-icon">📥</div>
-                    <div class="project-content">
-                        <div class="project-title">유튜브 다운로더</div>
-                        <div class="project-description">간편한 영상 다운로드 도구</div>
-                        <div class="project-link">naver.me/FtGbTYyB</div>
-                    </div>
-                </a>
-
-                <a href="https://naver.me/Gq9S81Ye" class="project-card" target="_blank">
-                    <div class="project-icon">🕒</div>
-                    <div class="project-content">
-                        <div class="project-title">바탕화면 투명 시계</div>
-                        <div class="project-description">깔끔한 위젯형 시계</div>
-                        <div class="project-link">naver.me/Gq9S81Ye</div>
-                    </div>
-                </a>
+            <div class="category">
+                <h2 class="category-title">🛠️ Utility</h2>
+                <div class="projects-grid">
+                    <a href="https://naver.me/GSc1DgLX" class="project-card" target="_blank">
+                        <div class="project-icon">📐</div>
+                        <div class="project-content">
+                            <div class="project-title">투명 각도기</div>
+                            <div class="project-description">화면 위 각도기</div>
+                        </div>
+                    </a>
+                    <a href="https://naver.me/Gq9S81Ye" class="project-card" target="_blank">
+                        <div class="project-icon">🕒</div>
+                        <div class="project-content">
+                            <div class="project-title">투명 시계</div>
+                            <div class="project-description">위젯형 시계</div>
+                        </div>
+                    </a>
+                    <a href="https://naver.me/FtGbTYyB" class="project-card" target="_blank">
+                        <div class="project-icon">📥</div>
+                        <div class="project-content">
+                            <div class="project-title">유튜브 다운</div>
+                            <div class="project-description">영상 다운로드 도구</div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
 
         <footer>
-            <p>© 2026 Jang's Workshop. All rights reserved.</p>
-            <p style="margin-top: 5px;">
-                <a href="mailto:7911171g@gmail.com" style="color: white; text-decoration: none; opacity: 0.8;">
+            <p>© 2026 Jang's Workshop. All rights reserved. | 
+                <a href="mailto:7911171g@gmail.com" style="color: white; text-decoration: none;">
                     ✉️ 7911171g@gmail.com
                 </a>
             </p>
