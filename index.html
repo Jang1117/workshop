@@ -11,113 +11,102 @@
             box-sizing: border-box;
         }
 
+        /* 기본 설정: 데스크톱 중심 */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* 스크롤 방지 */
-            padding: 10px;
+            padding: 20px;
+            color: #fff;
         }
 
         .container {
             max-width: 1200px;
             width: 100%;
-            height: 98vh;
             display: flex;
             flex-direction: column;
+            gap: 20px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 10px;
-            color: white;
             flex-shrink: 0;
         }
 
         h1 {
-            font-size: 1.8rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 1rem;
+            opacity: 0.9;
         }
 
-        /* 메인 2x2 그리드 */
+        /* 메인 그리드 레이아웃 */
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 12px;
-            flex-grow: 1;
-            min-height: 0;
+            grid-template-columns: repeat(2, 1fr); /* 데스크톱 2열 */
+            gap: 20px;
         }
 
         .category {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 12px;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .category-title {
-            font-size: 1.1rem;
-            color: white;
-            margin-bottom: 10px;
-            padding-left: 5px;
-            border-left: 4px solid #fff;
-            flex-shrink: 0;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 기본 2열 */
-            gap: 8px;
-            flex-grow: 1;
-            align-content: start;
-            overflow-y: auto; /* 내용이 많아질 경우 카테고리 내에서만 스크롤 */
-            padding-right: 4px;
+            grid-template-columns: 1fr 1fr; /* 카테고리 내 2열 */
+            gap: 12px;
         }
 
-        /* 스크롤바 디자인 (카테고리 내부용) */
-        .projects-grid::-webkit-scrollbar { width: 4px; }
-        .projects-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
-
         .project-card {
-            background: white;
-            border-radius: 10px;
-            padding: 10px;
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 12px;
             text-decoration: none;
             color: #333;
             display: flex;
             align-items: center;
             gap: 12px;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .project-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            background: #f8f9ff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            background: #fdfdff;
         }
 
         .project-icon {
-            width: 48px; /* 아이콘 크기 확대 */
-            height: 48px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e4e9ff 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem; /* 이모지 크기 확대 */
+            font-size: 1.5rem;
             flex-shrink: 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .project-content {
@@ -126,9 +115,11 @@
 
         .project-title {
             font-size: 0.95rem;
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 2px;
-            color: #222;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .project-description {
@@ -141,21 +132,48 @@
 
         footer {
             text-align: center;
-            padding: 12px 0;
-            color: white;
-            font-size: 0.8rem;
-            flex-shrink: 0;
+            padding: 10px 0;
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
 
-        /* 5개 혹은 홀수인 경우 마지막 카드 처리 */
-        .projects-grid a:last-child:nth-child(odd) {
-            grid-column: span 1; /* 2로 변경하면 마지막 홀수 카드가 가로로 길게 꽉 찹니다 */
-        }
+        /* 📱 모바일 최적화 레이아웃 (768px 이하) */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto; /* 모바일은 스크롤 허용 */
+                padding: 15px;
+                display: block; /* 중앙 정렬 해제 */
+            }
 
-        @media (max-width: 850px) {
-            .main-content { grid-template-columns: 1fr; overflow-y: auto; }
-            body { overflow: auto; }
-            .container { height: auto; }
+            h1 { font-size: 1.8rem; }
+
+            .main-content {
+                grid-template-columns: 1fr; /* 카테고리를 한 줄씩 배치 */
+                gap: 15px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr; /* 카테고리 내부 카드도 한 줄씩 배치 */
+                gap: 10px;
+            }
+
+            .project-card {
+                padding: 15px; /* 터치하기 쉽게 패딩 증가 */
+            }
+
+            .project-title {
+                font-size: 1rem; /* 가독성을 위해 제목 크기 확대 */
+            }
+
+            .project-description {
+                font-size: 0.85rem; /* 설명 크기 확대 */
+            }
+
+            .project-icon {
+                width: 50px; /* 아이콘 크기 확대 */
+                height: 50px;
+                font-size: 1.7rem;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
@@ -164,7 +182,7 @@
     <div class="container">
         <header>
             <h1>🛠️ Jang's Workshop</h1>
-            <p class="subtitle">모든 프로젝트를 한눈에 확인하세요</p>
+            <p class="subtitle">Personal Project Portfolio</p>
         </header>
 
         <div class="main-content">
@@ -175,28 +193,28 @@
                         <div class="project-icon">🌀</div>
                         <div class="project-content">
                             <div class="project-title">Wind</div>
-                            <div class="project-description">한국 풍력발전단지</div>
+                            <div class="project-description">한국 풍력발전단지 지도</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/palm/" class="project-card" target="_blank">
                         <div class="project-icon">🌴</div>
                         <div class="project-content">
                             <div class="project-title">Palm</div>
-                            <div class="project-description">Global Palm Plant</div>
+                            <div class="project-description">Global Palm Plant Map</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/soil" class="project-card" target="_blank">
                         <div class="project-icon">🌱</div>
                         <div class="project-content">
                             <div class="project-title">Soil</div>
-                            <div class="project-description">토양 관련 프로젝트</div>
+                            <div class="project-description">토양 환경 데이터 분석</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/STIassets" class="project-card" target="_blank">
                         <div class="project-icon">📊</div>
                         <div class="project-content">
                             <div class="project-title">STI Assets</div>
-                            <div class="project-description">STI 자산 관리</div>
+                            <div class="project-description">STI 자산 관리 시스템</div>
                         </div>
                     </a>
                 </div>
@@ -209,35 +227,35 @@
                         <div class="project-icon">🇮🇩</div>
                         <div class="project-content">
                             <div class="project-title">Indonesian</div>
-                            <div class="project-description">인도어 단어장</div>
+                            <div class="project-description">인도네시아어 학습 단어장</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/korean" class="project-card" target="_blank">
                         <div class="project-icon">🇰🇷</div>
                         <div class="project-content">
                             <div class="project-title">Korean</div>
-                            <div class="project-description">기초 한국어 학습</div>
+                            <div class="project-description">기초 한국어 교육 자료</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/korean/font-practice" class="project-card" target="_blank">
                         <div class="project-icon">✍️</div>
                         <div class="project-content">
                             <div class="project-title">Font</div>
-                            <div class="project-description">한글 글씨 연습</div>
+                            <div class="project-description">한글 정자체 글씨 연습</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/japanese/" class="project-card" target="_blank">
                         <div class="project-icon">🇯🇵</div>
                         <div class="project-content">
                             <div class="project-title">Japanese</div>
-                            <div class="project-description">기초 일어 학습</div>
+                            <div class="project-description">기초 일어 및 히라가나</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/gugudan" class="project-card" target="_blank">
                         <div class="project-icon">✖️</div>
                         <div class="project-content">
                             <div class="project-title">Gugudan</div>
-                            <div class="project-description">구구단 학습 도구</div>
+                            <div class="project-description">구구단 암기 트레이너</div>
                         </div>
                     </a>
                 </div>
@@ -250,28 +268,28 @@
                         <div class="project-icon">🍱</div>
                         <div class="project-content">
                             <div class="project-title">Lunch</div>
-                            <div class="project-description">점심 룰렛</div>
+                            <div class="project-description">메뉴 결정 룰렛</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/sudoku/" class="project-card" target="_blank">
                         <div class="project-icon">🔢</div>
                         <div class="project-content">
                             <div class="project-title">Sudoku</div>
-                            <div class="project-description">스도쿠 게임</div>
+                            <div class="project-description">클래식 스도쿠 퍼즐</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/linkopen" class="project-card" target="_blank">
                         <div class="project-icon">🔗</div>
                         <div class="project-content">
                             <div class="project-title">Link Open</div>
-                            <div class="project-description">링크 일괄 오픈 도구</div>
+                            <div class="project-description">다중 링크 동시 오픈</div>
                         </div>
                     </a>
                     <a href="https://jang1117.github.io/weekly" class="project-card" target="_blank">
                         <div class="project-icon">📅</div>
                         <div class="project-content">
                             <div class="project-title">Weekly</div>
-                            <div class="project-description">주간 일정 관리</div>
+                            <div class="project-description">주간 업무 스케줄러</div>
                         </div>
                     </a>
                 </div>
@@ -283,22 +301,22 @@
                     <a href="https://naver.me/GSc1DgLX" class="project-card" target="_blank">
                         <div class="project-icon">📐</div>
                         <div class="project-content">
-                            <div class="project-title">투명 각도기</div>
-                            <div class="project-description">PC용 투명 각도기</div>
+                            <div class="project-title">각도기</div>
+                            <div class="project-description">화면용 투명 각도기</div>
                         </div>
                     </a>
                     <a href="https://naver.me/Gq9S81Ye" class="project-card" target="_blank">
                         <div class="project-icon">🕒</div>
                         <div class="project-content">
-                            <div class="project-title">바탕화면 투명 시계</div>
-                            <div class="project-description">바탕화면 투명 시계</div>
+                            <div class="project-title">시계 위젯</div>
+                            <div class="project-description">바탕화면용 투명 시계</div>
                         </div>
                     </a>
                     <a href="https://naver.me/FtGbTYyB" class="project-card" target="_blank">
                         <div class="project-icon">📥</div>
                         <div class="project-content">
-                            <div class="project-title">Youtube Downloader</div>
-                            <div class="project-description">유튜브 다운로더</div>
+                            <div class="project-title">Downloader</div>
+                            <div class="project-description">영상 다운로드 도구</div>
                         </div>
                     </a>
                 </div>
@@ -307,12 +325,12 @@
 
         <footer>
             <p>© 2026 Jang's Workshop. All rights reserved. | 
-                <a href="mailto:7911171g@gmail.com" style="color: white; text-decoration: none; font-weight: bold;">
+                <a href="mailto:7911171g@gmail.com" style="color: white; text-decoration: underline; font-weight: 600;">
                     ✉️ 7911171g@gmail.com
                 </a>
             </p>
         </footer>
     </div>
 </body>
-</html>
-
+    </html>
+    
