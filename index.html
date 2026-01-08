@@ -140,37 +140,37 @@
         /* 📱 모바일 최적화 레이아웃 (768px 이하) */
         @media (max-width: 768px) {
             body {
-                overflow-y: auto; /* 모바일은 스크롤 허용 */
+                overflow-y: auto;
                 padding: 15px;
-                display: block; /* 중앙 정렬 해제 */
+                display: block;
             }
 
             h1 { font-size: 1.8rem; }
 
             .main-content {
-                grid-template-columns: 1fr; /* 카테고리를 한 줄씩 배치 */
+                grid-template-columns: 1fr;
                 gap: 15px;
             }
 
             .projects-grid {
-                grid-template-columns: 1fr; /* 카테고리 내부 카드도 한 줄씩 배치 */
+                grid-template-columns: 1fr;
                 gap: 10px;
             }
 
             .project-card {
-                padding: 15px; /* 터치하기 쉽게 패딩 증가 */
+                padding: 15px;
             }
 
             .project-title {
-                font-size: 1rem; /* 가독성을 위해 제목 크기 확대 */
+                font-size: 1rem;
             }
 
             .project-description {
-                font-size: 0.85rem; /* 설명 크기 확대 */
+                font-size: 0.85rem;
             }
 
             .project-icon {
-                width: 50px; /* 아이콘 크기 확대 */
+                width: 50px;
                 height: 50px;
                 font-size: 1.7rem;
             }
@@ -312,6 +312,13 @@
                             <div class="project-description">바탕화면용 투명 시계</div>
                         </div>
                     </a>
+                    <a href="https://naver.me/5FEwWA42" class="project-card" target="_blank">
+                        <div class="project-icon">🔓</div>
+                        <div class="project-content">
+                            <div class="project-title">엑셀 시트 보호 해제</div>
+                            <div class="project-description">엑셀 시트 암호 해제 도구</div>
+                        </div>
+                    </a>
                     <a href="https://naver.me/FtGbTYyB" class="project-card" target="_blank">
                         <div class="project-icon">📥</div>
                         <div class="project-content">
@@ -319,6 +326,7 @@
                             <div class="project-description">영상 다운로드 도구</div>
                         </div>
                     </a>
+
                 </div>
             </div>
         </div>
@@ -332,6 +340,4 @@
         </footer>
     </div>
 </body>
-    </html>
-    
-
+</html>
